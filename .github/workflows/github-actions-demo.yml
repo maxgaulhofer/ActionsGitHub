@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - run: |
-          echo "🎉 The job was triggered by event: $EVENT_NAME"
+          echo "🎉 The job was triggered by event: ${EVENT_NAME}"
           echo "🔎 The name of your branch is $REF and your repository is $REPOSITORY."
         env:
           EVENT_NAME: ${{ github.event_name }}
