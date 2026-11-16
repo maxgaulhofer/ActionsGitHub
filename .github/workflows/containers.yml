@@ -7,8 +7,7 @@ jobs:
     steps:
       - name: Install the tools that actions expect
         run: |
-          apt-get update
-          apt-get install -y bash git jq curl
+          apk add --no-cache bash git jq curl
           
       - uses: actions/checkout@v7.0.1
         with:
