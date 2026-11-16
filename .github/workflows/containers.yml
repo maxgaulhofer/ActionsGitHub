@@ -3,16 +3,19 @@ on: push
 jobs:
   step-container:
     runs-on: ubuntu-latest
+    container: docker://node:26-bookworm-slim
     steps:
-      - name: 'on the runner'
-        run: cat /etc/os-release
-      - name: 'on the container'
-        uses: docker://alpine:3.22
+      - name: Install the tools that actions expect
+        run: apk add --no-cache bash git jq curl
+
+      - uses: actions/checkout@v7.0.1
         with:
-          entrypoint: /bin/sh
-          args: -c "cat /etc/os-release"
-      - name: 'second job container'
-        uses: docker://node:26-bookworm-slim
-        with:
-          entrypoint: /bin/sh
-          args: -c "cat /etc/os-release && node -- version"
+          persist-credentials: false
+
+      - name: Needs git and bash
+        shell: bash
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git log -1
+      
+
