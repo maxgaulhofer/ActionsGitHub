@@ -6,7 +6,9 @@ jobs:
     container: docker://node:26-bookworm-slim
     steps:
       - name: Install the tools that actions expect
-        run: apk add --no-cache bash git jq curl
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bash git jq curl
 
       - uses: actions/checkout@v7.0.1
         with:
