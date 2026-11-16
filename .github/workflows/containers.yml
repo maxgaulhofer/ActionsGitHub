@@ -3,13 +3,13 @@ on: push
 jobs:
   step-container:
     runs-on: ubuntu-latest
-    container: docker://node:26-bookworm-slim
+    container: docker://alpine:3.22
     steps:
       - name: Install the tools that actions expect
         run: |
-          sudo apt-get update
-          sudo apt-get install -y bash git jq curl
-
+          apt-get update
+          apt-get install -y bash git jq curl
+          
       - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
