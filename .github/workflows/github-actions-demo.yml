@@ -19,6 +19,8 @@ permissions:
 cache-mode: none
 jobs:
   Build:
+    environment: ${{  inputs.environments || 'test'}} 
+      
     runs-on: ubuntu-slim
     steps:
       - run: |
