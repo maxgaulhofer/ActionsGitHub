@@ -1,0 +1,13 @@
+name: docker
+on: push
+jobs:
+  step-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'on the runner'
+        run: cat /etc/os-release
+      - name: 'on the container'
+        uses: docker://alpine:3.22
+        with:
+          entrypoint: /bin/sh
+          args: -c "cat /etc/os-release"
