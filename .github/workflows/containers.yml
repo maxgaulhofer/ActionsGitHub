@@ -11,3 +11,8 @@ jobs:
         with:
           entrypoint: /bin/sh
           args: -c "cat /etc/os-release"
+      - name: 'second job container'
+        uses: docker://node:26-bookworm-slim
+        with:
+          entrypoint: /bin/sh
+          args: -c "cat /etc/os-release & node -- version"
