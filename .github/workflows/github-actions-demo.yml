@@ -19,7 +19,7 @@ permissions:
 cache-mode: none
 jobs:
   Build:
-    environment: ${{  inputs.environments} 
+    environment: ${{  inputs.environments}}
       
     runs-on: ubuntu-slim
     steps:
