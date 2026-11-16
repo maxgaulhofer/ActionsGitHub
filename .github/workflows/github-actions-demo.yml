@@ -14,8 +14,9 @@ on:
         type: environment
         required: true
         
-    
-cache_mode: none
+permissions:
+  contents: read
+cache-mode: none
 jobs:
   Build:
     runs-on: ubuntu-slim
